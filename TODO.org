@@ -22,3 +22,6 @@
 
 
 * cellule de recherche pour filtrer les tâches
+
+* Anne MATRAY: juste dans l'étape 1, si il pouvait y avoir la possibilité de créer des notes en avance pour une rétro ça pourrait être top
+* Anne MATRAY: et j'avais aussi une autre remarque : sur le nombre de colonnes, faudrait pouvoir en mettre plus car parfois on essaie de changer un peu les rétros (avec par exemple : TO CONTINUE, TO STOP, IN PROGRES...)
