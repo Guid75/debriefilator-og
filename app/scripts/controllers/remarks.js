@@ -8,12 +8,20 @@
  * Controller of the debriefilatorApp
  */
 app.controller('RemarksCtrl', function ($scope) {
-		$scope.columns = [
-			{
-				style: { backgroundColor: '#FDD' }
-			},
-			{
-				style: { backgroundColor: '#DFD' }
+	$scope.columns = [
+		{
+			style: {
+				backgroundColor: '#FDD'
 			}
-		];
-	});
+		},
+		{
+			style: {
+				backgroundColor: '#DFD'
+			}
+		}
+	];
+
+	$scope.addNote = function() {
+		console.log('Add a note');
+	};
+});

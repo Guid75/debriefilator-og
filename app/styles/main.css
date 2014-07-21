@@ -61,6 +61,7 @@ body {
 	overflow: hidden;
 	box-shadow: 2px 2px 2px #999999;
 	padding-left: 10px;
+	padding-top: 5px;
 }
 
 .remarks-area {
