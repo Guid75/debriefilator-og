@@ -18,14 +18,13 @@ app.factory('Postit', function () {
 				postits[cat] = [];
 			});
 		},
-		add: function(category, text, position) {
+		add: function(category, text) {
 			if (!postits[category]) {
 				console.error('category error');
 				return;
 			}
 			postits[category].push({
-				text: text,
-				position: position
+				text: text
 			});
 		},
 		list: function(category) {

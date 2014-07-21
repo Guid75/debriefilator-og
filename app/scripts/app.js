@@ -40,7 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    .state('index', {
 			url: '',
 			views: {
-				"postits-all": {
+				'postits-all': {
 					controller: 'PostitsCategoriesCtrl',
 					templateUrl: 'partials/postits-all.html'
 				}

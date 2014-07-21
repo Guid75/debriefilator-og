@@ -1,5 +1,9 @@
-<!-- <div ng-repeat="column in columns" ng-include="'partials/postits.html'" class="postits"> -->
 <div ng-repeat="column in columns"
 	 ng-include="'partials/postits.html'" class="postits"
 	 postit-type="{{column.postitType}}" ng-controller="PostitsCtrl">
 </div>
+<!-- <div class="postits-header" > -->
+<!--   <input type="text" ng-model="newPostit.text" placeholder="Post-it message" />&nbsp; -->
+<!--   <button class="btn btn-default btn-negative" ng-click="addPostit('negative')">Negative</button> -->
+<!--   <button class="btn btn-default btn-positive" ng-click="addPostit('positive')">Positive</button> -->
+<!-- </div> -->

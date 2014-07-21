@@ -1,3 +1,6 @@
-<div>
-  <span ng-bind="text"></span>
+<div class="postit">
+  <div class="postit-toolbar">
+	<span class="postit-delete" title="close" ng-click="displayPostit()">x</span>
+  </div>
+  <div class="postit-editable" contenteditable="" ng-bind="postit.text"></div>
 </div

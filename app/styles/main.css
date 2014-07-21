@@ -1,36 +1,3 @@
-/* Space out content a bit */
-/* body { */
-/*   padding-top: 20px; */
-/*   padding-bottom: 20px; */
-/* } */
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-/* .header, */
-/* .marketing, */
-/* .footer { */
-/*   padding-left: 15px; */
-/*   padding-right: 15px; */
-/* } */
-
-/* Custom page header */
-/* .header { */
-/*   border-bottom: 1px solid #e5e5e5; */
-/* } */
-/* Make the masthead heading the same height as the navigation */
-/* .header h3 { */
-/*   margin-top: 0; */
-/*   margin-bottom: 0; */
-/*   line-height: 40px; */
-/*   padding-bottom: 19px; */
-/* } */
-
-/* Custom page footer */
-/* .footer { */
-/*   padding-top: 19px; */
-/*   color: #777; */
-/*   border-top: 1px solid #e5e5e5; */
-/* } */
-
 html, body {
 	height: 100%;
 }
@@ -68,7 +35,7 @@ body {
 	height: 100%;
 	position: relative;
 	overflow: auto;
-  padding-top: 50px;
+	padding-top: 50px;
 }
 
 /* Customize container */
@@ -110,8 +77,27 @@ body {
 	-moz-box-shadow: 2px 2px 2px #999999;
 	-webkit-box-shadow: 2px 2px 2px #999999;
 	box-shadow: 2px 2px 2px #999999;
-  float: left;
-  margin: 5px;
+	float: left;
+	margin: 5px;
+	position: relative;
+}
+
+.postit-toolbar {
+	font-weight: bold;
+	text-align: right;
+}
+
+.postit-delete {
+	cursor: pointer;
+    font-size: 120%;
+}
+
+.postit-editable {
+	cursor: pointer;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 
 .btn-positive {
