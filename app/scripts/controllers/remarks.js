@@ -12,16 +12,29 @@ app.controller('RemarksCtrl', function ($scope) {
 		{
 			style: {
 				backgroundColor: '#FDD'
-			}
+			},
+			remarkType: 'negative'
 		},
 		{
 			style: {
 				backgroundColor: '#DFD'
-			}
+			},
+			remarkType: 'positive'
 		}
 	];
 
-	$scope.addNote = function() {
-		console.log('Add a note');
+	$scope.remarks = {
+		negative: [],
+		positive: []
+	};
+
+	$scope.addRemark = function(type) {
+		$scope.remarks[type].push({
+			text: 'A remark',
+			position: {
+				x: 50 + $scope.remarks[type].length * 150,
+				y: 50
+			}
+		});
 	};
 });
