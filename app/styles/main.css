@@ -39,19 +39,19 @@ body {
 	background-color: #EEE;
 }
 
-.remarks-all {
+.postits-all {
 	height: 100%;
 	width: 100%;
 }
 
-.remarks {
+.postits {
 	width: 50%;
 	height: 100%;
 	float: left;
 	position: relative;
 }
 
-.remarks-header {
+.postits-header {
 	height: 3em;
 	background-color: #FFF;
 	width: 100%;
@@ -64,7 +64,7 @@ body {
 	padding-top: 5px;
 }
 
-.remarks-area {
+.postits-area {
 	height: 100%;
 	position: relative;
 	overflow: auto;

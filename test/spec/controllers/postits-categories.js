@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: PostitsCategoriesCtrl', function () {
 
   // load the controller's module
   beforeEach(module('debriefilatorApp'));
 
-  var MainCtrl,
+  var PostitsCategoriesCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    PostitsCategoriesCtrl = $controller('PostitsCategoriesCtrl', {
       $scope: scope
     });
   }));

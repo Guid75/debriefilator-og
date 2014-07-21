@@ -1,0 +1,6 @@
+<div class="postits-area" ng-style="{{column.style}}">
+  <div ng-repeat="postit in postits" class="postit" ng-style="{left: postit.position.x, top: postit.position.y}">{{ postit.text }}</div>
+</div>
+<div class="postits-header" >
+  <button class="btn btn-default" ng-click="addPostit()">Add a note</button>
+</div>

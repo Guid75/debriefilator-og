@@ -1,0 +1,5 @@
+<!-- <div ng-repeat="column in columns" ng-include="'partials/postits.html'" class="postits"> -->
+<div ng-repeat="column in columns"
+	 ng-include="'partials/postits.html'" class="postits"
+	 postit-type="{{column.postitType}}" ng-controller="PostitsCtrl">
+</div>

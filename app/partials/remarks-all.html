@@ -1,8 +1,0 @@
-<!-- <div ng-repeat="column in columns" ng-include="'partials/remarks.html'" class="remarks"> -->
-<div ng-repeat="column in columns" ng-include="'partials/remarks.html'" class="remarks" remark-type="{{column.remarkType}}">
-</div>
-<div class="remarks-header" >
-  <input type="text" ng-model="newPostit.text" placeholder="Post-it message" />&nbsp;
-  <button class="btn btn-default btn-negative" ng-click="addRemark('negative')">Negative</button>
-  <button class="btn btn-default btn-positive" ng-click="addRemark('positive')">Positive</button>
-</div>
