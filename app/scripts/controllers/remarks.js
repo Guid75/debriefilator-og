@@ -28,13 +28,17 @@ app.controller('RemarksCtrl', function ($scope) {
 		positive: []
 	};
 
+  $scope.newPostit = {
+    text: ""
+  };
+
 	$scope.addRemark = function(type) {
+    if (!$scope.newPostit.text) {
+      return;
+    }
 		$scope.remarks[type].push({
-			text: 'A remark',
-			position: {
-				x: 50 + $scope.remarks[type].length * 150,
-				y: 50
-			}
+			text: $scope.newPostit
 		});
+    $scope.newPostit = "";
 	};
 });

@@ -68,6 +68,7 @@ body {
 	height: 100%;
 	position: relative;
 	overflow: auto;
+  padding-top: 50px;
 }
 
 /* Customize container */
@@ -109,5 +110,13 @@ body {
 	-moz-box-shadow: 2px 2px 2px #999999;
 	-webkit-box-shadow: 2px 2px 2px #999999;
 	box-shadow: 2px 2px 2px #999999;
-	position: absolute;
+  float: left;
+  margin: 5px;
+}
+
+.btn-positive {
+  background-color: #DFD
+}
+.btn-negative {
+  background-color: #FDD
 }

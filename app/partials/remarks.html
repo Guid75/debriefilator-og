@@ -1,6 +1,3 @@
 <div class="remarks-area" ng-style="{{column.style}}">
-  <div ng-repeat="remark in remarks[columns[$index].remarkType]" class="postit" ng-style="{left: remark.position.x, top: remark.position.y}">{{ remark.text }}</div>
-</div>
-<div class="remarks-header" >
-  <button class="btn btn-default" ng-click="addRemark(columns[$index].remarkType)">Add a note</button>
+  <div ng-repeat="remark in remarks[columns[$index].remarkType]" class="postit" ng-include="'partials/postit.html'">
 </div>
