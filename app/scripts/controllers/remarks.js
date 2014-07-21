@@ -10,10 +10,10 @@
 app.controller('RemarksCtrl', function ($scope) {
 		$scope.columns = [
 			{
-				backgroundColor: '#FDD'
+				style: { backgroundColor: '#FDD' }
 			},
 			{
-				backgroundColor: '#DFD'
+				style: { backgroundColor: '#DFD' }
 			}
 		];
 	});
