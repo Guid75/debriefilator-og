@@ -15,7 +15,7 @@ app.controller('PostitsCtrl', function ($scope, Postit) {
 		Postit.add(postitType, 'A simple remark');
 	};
 
-	$scope.displayPostit = function() {
-		console.log(Postit.list(postitType));
+	$scope.deletePostit = function(index) {
+		Postit.delete(postitType, index);
 	};
 });

@@ -27,6 +27,13 @@ app.factory('Postit', function () {
 				text: text
 			});
 		},
+		delete: function(category, index) {
+			if (!postits[category]) {
+				console.error('category error');
+				return;
+			}
+			postits[category].splice(index, 1);
+		},
 		list: function(category) {
 			if (!postits[category]) {
 				console.error('category error');
