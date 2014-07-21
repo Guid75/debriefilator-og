@@ -386,6 +386,8 @@ module.exports = function (grunt) {
     'connect:test',
     'karma'
   ]);
+  
+  grunt.registerTask('heroku', ['jshint']);
 
   grunt.registerTask('build', [
     'clean:dist',
