@@ -56,6 +56,7 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
+          'api/*.js',
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -80,6 +81,10 @@ module.exports = function (grunt) {
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
+              ),
+              connect().use(
+                '/api',
+                require('./api')
               ),
               connect.static(appConfig.app)
             ];
@@ -386,7 +391,7 @@ module.exports = function (grunt) {
     'connect:test',
     'karma'
   ]);
-  
+
   grunt.registerTask('heroku', ['jshint']);
 
   grunt.registerTask('build', [

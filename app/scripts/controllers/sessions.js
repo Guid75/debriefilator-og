@@ -33,5 +33,8 @@ app.controller('SessionsCtrl', function ($scope, $modal, $log, $state) {
 
 	$scope.joinSession = function() {
 		$state.transitionTo('sessions');
+    $http({url: '/api/sessions'}).then(function () {
+      console.log('sessions', arguments);
+    });
 	};
 });

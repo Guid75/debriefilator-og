@@ -41,6 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			url: 'sessions',
 			views: {
 				'main': {
+          controller: 'SessionsCtrl',
 					templateUrl: 'views/sessions.html'
 				}
 			}
