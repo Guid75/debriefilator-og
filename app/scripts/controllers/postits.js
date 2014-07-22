@@ -26,7 +26,9 @@ app.directive('contenteditable', function() {
 		restrict: 'A', // only activate on element attribute
 		require: '?ngModel', // get a hold of NgModelController
 		link: function(scope, element, attrs, ngModel) {
-			if (!ngModel) return; // do nothing if no ng-model
+			if (!ngModel) {
+				return; // do nothing if no ng-model
+			}
 
 			// Specify how UI should be updated
 			ngModel.$render = function() {
@@ -43,7 +45,7 @@ app.directive('contenteditable', function() {
 				var html = element.html();
 				// When we clear the content editable the browser leaves a <br> behind
 				// If strip-br attribute is provided then we strip this out
-				if (attrs.stripBr && html == '<br>') {
+				if (attrs.stripBr && html === '<br>') {
 					html = '';
 				}
 				ngModel.$setViewValue(html);
@@ -55,7 +57,7 @@ app.directive('contenteditable', function() {
 app.directive('initfocus', function() {
     return {
         restrict: 'A', // only activate on element attribute
-        link: function(scope, element, attrs) {
+        link: function(scope, element) {
 			setTimeout(function() {
 				element.focus();
 				document.execCommand('selectAll',false,null);

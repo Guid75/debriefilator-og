@@ -1,9 +1,7 @@
 var express = require('express');
 var app = module.exports = express();
 
-
-
-app.use(function () {
+app.use(function (req, res) {
   res.json({
     sessions: [{
       name: 'sprint1'
@@ -15,6 +13,6 @@ app.use(function () {
       name: 'sprint4'
     }, {
       name: 'sprint5'
-    }];
+    }]
   });
 });
