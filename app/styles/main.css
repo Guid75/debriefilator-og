@@ -106,3 +106,10 @@ body {
 .btn-negative {
   background-color: #FDD
 }
+
+.postits-filter {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 150px;
+}

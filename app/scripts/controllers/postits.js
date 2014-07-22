@@ -12,7 +12,7 @@ app.controller('PostitsCtrl', function ($scope, Postit) {
 	$scope.postits = Postit.list(postitType);
 
 	$scope.addPostit = function() {
-		Postit.add(postitType, 'A simple remark');
+		Postit.add(postitType, 'Enter your remark here');
 	};
 
 	$scope.deletePostit = function(index) {
