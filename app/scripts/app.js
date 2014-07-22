@@ -33,16 +33,24 @@ var app = angular
 app.config(function($stateProvider, $urlRouterProvider) {
 	//
 	// For any unmatched url, redirect to /state1
-	$urlRouterProvider.otherwise('/index');
+	$urlRouterProvider.otherwise('/sessions');
 	//
 	// Now set up the states
 	$stateProvider
-	    .state('index', {
-			url: '',
+	    .state('postits', {
+			url: 'postits',
 			views: {
-				'postits-all': {
+				'main': {
 					controller: 'PostitsCategoriesCtrl',
 					templateUrl: 'partials/postits-all.html'
+				}
+			}
+		})
+		.state('sessions', {
+			url: 'sessions',
+			views: {
+				'main': {
+					templateUrl: 'views/sessions.html'
 				}
 			}
 		});
