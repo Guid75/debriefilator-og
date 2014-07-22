@@ -52,14 +52,13 @@ app.directive('contenteditable', function() {
 	};
 });
 
-app.directive('initFocus', function() {
+app.directive('initfocus', function() {
     return {
         restrict: 'A', // only activate on element attribute
         link: function(scope, element, attrs) {
-			console.log('ok');
 			setTimeout(function() {
-				console.log('focus');
 				element.focus();
+				document.execCommand('selectAll',false,null);
 			}, 0);
         }
     };
