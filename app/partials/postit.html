@@ -2,5 +2,6 @@
   <div class="postit-toolbar">
 	<span class="postit-delete" title="close" ng-click="deletePostit($index)">x</span>
   </div>
-  <div class="postit-editable" contenteditable="" ng-bind="postit.text"></div>
+  <div class="postit-editable" contenteditable strip-br="true" ng-model="postit.text">
+  </div>
 </div
