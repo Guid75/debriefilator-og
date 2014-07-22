@@ -12,34 +12,27 @@ app.controller('SessionsCtrl', function ($scope, $modal, $log, $state) {
 		var modalInstance = $modal.open({
 			templateUrl: 'partials/newsession.html',
 			controller: ['$scope', function($scope) {
+				$scope.session = {
+					userName: '',
+					sessionName: ''
+				};
 				$scope.dismiss = function() {
 					$scope.$dismiss();
 				};
 
 				$scope.save = function() {
-					//							item.update().then(function() {
-					$scope.$close(true);
-					//							});
+					$scope.$close($scope.session);
 				};
-			}],
-//			controller: ModalInstanceCtrl,
-//			size: size,
-			resolve: {
-				items: function () {
-					return $scope.items;
-				}
-			}
+			}]
 		});
 
-		modalInstance.result.then(function (selectedItem) {
+		modalInstance.result.then(function (sessionCfg) {
 			$state.transitionTo('postits');
-			$scope.selected = selectedItem;
-		}, function () {
-			$log.info('Modal dismissed at: ' + new Date());
+			console.log(sessionCfg);
 		});
 	};
 
 	$scope.joinSession = function() {
-		
+
 	};
 });

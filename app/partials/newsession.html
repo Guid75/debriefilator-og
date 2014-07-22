@@ -5,11 +5,15 @@
   <form>
 	<div class="form-group">
 	  <label for="yourName">Enter your name:</label>
-      <input type="text" class="form-control" id="yourName" placeholder="Username">
+      <input type="text" class="form-control" id="yourName"
+			 placeholder="Username" ng-model="session.userName"
+			 entervalidation="save()">
 	</div>
 	<div class="form-group">
 	  <label for="sessionName">Enter a name for this session:</label>
-      <input type="text" class="form-control" id="sessionName" placeholder="Session name">
+      <input type="text" class="form-control" id="sessionName"
+			 placeholder="Session name" ng-model="session.sessionName"
+			 entervalidation="save()">
 	</div>
   </form>
   </div>

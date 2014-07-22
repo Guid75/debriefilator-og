@@ -20,16 +20,6 @@ var app = angular
 			'ui.router',
 			'ui.bootstrap'
 		]);
-		// .config(function ($routeProvider) {
-		// 	$routeProvider
-		// 		.when('/', {
-		// 			templateUrl: 'views/main.html',
-		// 			controller: 'MainCtrl'
-		// 		})
-		// 		.otherwise({
-		// 			redirectTo: '/'
-		// 		});
-		// });
 
 app.config(function($stateProvider, $urlRouterProvider) {
 	//
@@ -54,31 +44,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
 					templateUrl: 'views/sessions.html'
 				}
 			}
-		})
-		.state("newsession", {
-			url: "new",
-			onEnter: function($stateParams, $state, $modal, $resource) {
-				$modal.open({
-					templateUrl: "partials/newsession.html",
-					resolve: {
-						item: function() { /*new Item(123).get();*/ }
-					},
-					controller: ['$scope', 'item', function($scope, item) {
-						$scope.dismiss = function() {
-							$scope.$dismiss();
-						};
-
-						$scope.save = function() {
-//							item.update().then(function() {
-								$scope.$close(true);
-//							});
-						};
-					}]
-				}).result.then(function(result) {
-					if (result) {
-						return $state.transitionTo("postits");
-					}
-				});
-			}
 		});
+});
+
+app.directive('entervalidation', function() {
+    return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			element.bind("keydown keypress", function(event) {
+				if(event.which === 13) {
+					scope.$apply(function(){
+						scope.$eval(attrs.entervalidation, {'event': event});
+					});
+
+					event.preventDefault();
+				}
+			});
+		}
+    };
 });
