@@ -28,11 +28,10 @@ app.controller('SessionsCtrl', function ($scope, $modal, $log, $state) {
 
 		modalInstance.result.then(function (sessionCfg) {
 			$state.transitionTo('postits');
-			console.log(sessionCfg);
 		});
 	};
 
 	$scope.joinSession = function() {
-
+		$state.transitionTo('sessions');
 	};
 });
