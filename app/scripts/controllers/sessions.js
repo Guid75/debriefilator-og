@@ -14,7 +14,7 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 	$scope.newSession = function() {
 		var modalInstance = $modal.open({
 			templateUrl: 'partials/newsession.html',
-			controller: function($scope, PostitsLayout) {
+			controller: ['$scope', 'PostitsLayout', function($scope, PostitsLayout) {
 				$scope.layouts = PostitsLayout.all();
 				$scope.session = {
 					userName: '',
@@ -32,7 +32,7 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 				$scope.clickCat = function(index) {
 					$scope.session.layout = $scope.layouts[index];
 				};
-			}
+			}]
 		});
 
 		modalInstance.result.then(function (sessionCfg) {
