@@ -2,6 +2,7 @@
   <div class="postits-columns">
 	<div ng-repeat="column in layout"
 		 ng-include="'partials/postits.html'" class="postits"
+		 style="width: {{getWidthStyle()}};"
 		 postit-type="{{column.name}}" ng-controller="PostitsCtrl">
 	</div>
   </div>

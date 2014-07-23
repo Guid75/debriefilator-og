@@ -9,4 +9,7 @@
  */
 app.controller('SessionCtrl', ['$scope', 'Postit', function ($scope, Postit) {
 	$scope.layout = Postit.layout();
+	$scope.getWidthStyle = function() {
+		return (100 / $scope.layout.length) + '%';
+	};
 }]);
