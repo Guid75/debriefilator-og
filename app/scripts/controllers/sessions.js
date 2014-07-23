@@ -7,7 +7,9 @@
  * # SessionsCtrl
  * Controller of the debriefilatorApp
  */
-app.controller('SessionsCtrl', function ($scope, $modal, $log, $state) {
+app.controller('SessionsCtrl', function ($scope, $modal, $log, $state, Session) {
+  $scope.Session = Session;
+
 	$scope.newSession = function() {
 		var modalInstance = $modal.open({
 			templateUrl: 'partials/newsession.html',
@@ -26,15 +28,14 @@ app.controller('SessionsCtrl', function ($scope, $modal, $log, $state) {
 			}]
 		});
 
-		modalInstance.result.then(function (sessionCfg) {
+		modalInstance.result.then(function () {
 			$state.transitionTo('postits');
 		});
 	};
 
 	$scope.joinSession = function() {
 		$state.transitionTo('sessions');
-    $http({url: '/api/sessions'}).then(function () {
-      console.log('sessions', arguments);
-    });
+
+    Session.list();
 	};
 });

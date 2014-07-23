@@ -1,5 +1,6 @@
 <div>
-  <p>session1</p>
-  <p>session2</p>
-  <p>session3</p>
+  sessions lists:
+  <div ng-repeat="session in Session.sessions">
+    <div ng-bind="session.name"></div>
+  </div>
 </div>
