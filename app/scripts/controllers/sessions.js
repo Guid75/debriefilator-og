@@ -35,7 +35,7 @@ app.controller('SessionsCtrl', ['$scope', '$modal', '$state', 'Session', 'Postit
 
 		modalInstance.result.then(function (sessionCfg) {
 			Postit.init(sessionCfg.layout);
-			$state.transitionTo('session');
+			$state.go('session', null, { reload: true });
 		});
 	};
 
