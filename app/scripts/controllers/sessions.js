@@ -8,9 +8,7 @@
  * Controller of the debriefilatorApp
  */
 app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit) {
-
-  $scope.Session = Session;
-
+	$scope.Session = Session;
 	$scope.newSession = function() {
 		var modalInstance = $modal.open({
 			templateUrl: 'partials/newsession.html',

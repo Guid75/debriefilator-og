@@ -38,6 +38,31 @@ body {
 	position: relative;
 }
 
+.background-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+}
+
+.background-area-table {
+	height: 100%;
+	width: 100%;
+	display: table;
+	overflow: hidden;
+}
+
+.background-area-table .background-text {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	color: #DBB;
+	user-select: none;
+	cursor: default;
+}
+
 .postits-header {
 	height: 3em;
 	background-color: #FFF;

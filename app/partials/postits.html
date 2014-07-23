@@ -1,9 +1,17 @@
-<div class="postits-area" ng-style="{'background-color': column.color}">
+<div class="postits-area" ng-style="{'background-color':
+									column.color}">
+  <div class="background-area">
+	<div class="background-area-table">
+	  <div class="background-text" style="color: {{column.color | luminance:-0.15 }}">
+		<h1>{{column.name}}</h1>
+	  </div>
+	</div>
+  </div>
   <div ng-repeat="postit in postits | filter:search" ng-include="'partials/postit.html'" ng-animate="'animate'" >
+  </div>
+  <div class="postits-header" >
+	<button class="btn btn-default" ng-click="addPostit()">Add a note</button>
+	<input class="form-control postits-filter" ng-model="search.$"
+		   placeholder="Enter a filter">
+  </div>
 </div>
-<div class="postits-header" >
-  <button class="btn btn-default" ng-click="addPostit()">Add a note</button>
-  <input class="form-control postits-filter" ng-model="search.$"
-		 placeholder="Enter a filter">
-</div>
-
