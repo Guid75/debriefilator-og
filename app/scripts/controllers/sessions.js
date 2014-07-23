@@ -7,12 +7,14 @@
  * # SessionsCtrl
  * Controller of the debriefilatorApp
  */
-app.controller('SessionsCtrl', ['$scope', '$modal', '$state', 'Session', 'Postit',
-								function ($scope, $modal, $state, Session, Postit) {
+app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit) {
+
+  $scope.Session = Session;
+
 	$scope.newSession = function() {
 		var modalInstance = $modal.open({
 			templateUrl: 'partials/newsession.html',
-			controller: ['$scope', 'PostitsLayout', function($scope, PostitsLayout, Postit) {
+			controller: function($scope, PostitsLayout) {
 				$scope.layouts = PostitsLayout.all();
 				$scope.session = {
 					userName: '',
@@ -30,7 +32,7 @@ app.controller('SessionsCtrl', ['$scope', '$modal', '$state', 'Session', 'Postit
 				$scope.clickCat = function(index) {
 					$scope.session.layout = $scope.layouts[index];
 				};
-			}]
+			}
 		});
 
 		modalInstance.result.then(function (sessionCfg) {
@@ -41,11 +43,9 @@ app.controller('SessionsCtrl', ['$scope', '$modal', '$state', 'Session', 'Postit
 
 	$scope.joinSession = function() {
 		$state.transitionTo('sessions');
-		Session.list().then(function(sessions) {
-			$scope.sessions = sessions;
-		});
+		Session.list();
 	};
-}]);
+});
 
 app.filter('categoriescaption', function() {
 	return function(category) {
