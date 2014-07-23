@@ -28,12 +28,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	//
 	// Now set up the states
 	$stateProvider
-	    .state('postits', {
-			url: 'postits',
+	    .state('session', {
+			url: 'session',
 			views: {
 				'main': {
-					controller: 'PostitsCategoriesCtrl',
-					templateUrl: 'partials/postits-all.html'
+					controller: 'SessionCtrl',
+					templateUrl: 'views/session.html'
 				}
 			}
 		})
@@ -41,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			url: 'sessions',
 			views: {
 				'main': {
-          controller: 'SessionsCtrl',
+					controller: 'SessionsCtrl',
 					templateUrl: 'views/sessions.html'
 				}
 			}

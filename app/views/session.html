@@ -1,7 +1,11 @@
-<div class="postits-all">
-  <div ng-repeat="column in columns"
-	   ng-include="'partials/postits.html'" class="postits"
-	   postit-type="{{column.postitType}}" ng-controller="PostitsCtrl">
+<div class="session">
+  <div class="postits-columns">
+	<div ng-repeat="column in layout"
+		 ng-include="'partials/postits.html'" class="postits"
+		 postit-type="{{column.name}}" ng-controller="PostitsCtrl">
+	</div>
+  </div>
+  <div class="session-info" ng-include="'partials/sessioninfo.html'">
   </div>
 </div>
 <!-- <div class="postits-header" > -->
