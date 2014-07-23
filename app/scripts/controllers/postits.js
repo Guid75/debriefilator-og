@@ -8,7 +8,7 @@
  * Controller of the debriefilatorApp
  */
 app.controller('PostitsCtrl', function ($scope, Postit) {
-	var postitType = $scope.$parent.column.postitType;
+	var postitType = $scope.$parent.column.name;
 	$scope.postits = Postit.list(postitType);
 
 	$scope.addPostit = function() {
@@ -59,7 +59,7 @@ app.directive('initfocus', function() {
         restrict: 'A', // only activate on element attribute
         link: function(scope, element) {
 			setTimeout(function() {
-				element.focus();
+				element[0].focus();
 				document.execCommand('selectAll',false,null);
 			}, 0);
         }

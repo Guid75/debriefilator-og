@@ -36,7 +36,6 @@
     <!-- </div> -->
 	<div ng-include="'partials/navbar.html'"></div>
 	<div ui-view="main" class="main-area"></div>
-
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -62,10 +61,11 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/postits.js"></script>
-        <script src="scripts/controllers/postits-categories.js"></script>
         <script src="scripts/controllers/sessions.js"></script>
         <script src="scripts/services/postit.js"></script>
         <script src="scripts/services/session.js"></script>
+        <script src="scripts/services/postitslayout.js"></script>
+        <script src="scripts/controllers/session.js"></script>
         <!-- endbuild -->
 </body>
 </html>

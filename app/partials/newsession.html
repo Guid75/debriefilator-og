@@ -4,16 +4,31 @@
 <div class="modal-body">
   <form>
 	<div class="form-group">
-	  <label for="yourName">Enter your name:</label>
+	  <label for="yourName">Enter your name (optional):</label>
       <input type="text" class="form-control" id="yourName"
 			 placeholder="Username" ng-model="session.userName"
 			 entervalidation="save()">
 	</div>
 	<div class="form-group">
-	  <label for="sessionName">Enter a name for this session:</label>
+	  <label for="sessionName">Enter a name for this session (optional):</label>
       <input type="text" class="form-control" id="sessionName"
 			 placeholder="Session name" ng-model="session.sessionName"
 			 entervalidation="save()">
+	</div>
+	<div class="form-group">
+	  <label for="columnsType">Choose your notes layout:</label>
+	  <div class="dropdown" id="columnsType">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+		  {{ session.layout | categoriescaption }}
+		  <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu"
+			aria-labelledby="dropdownMenu1">
+		  <li ng-repeat="layout in layouts"
+		  role="presentation"><a role="menuitem" tabindex="-1" ng-click="clickCat($index)"
+		  href="#">{{ layout | categoriescaption }}</a></li>
+		</ul>
+	  </div>
 	</div>
   </form>
   </div>

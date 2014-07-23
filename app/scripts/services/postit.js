@@ -8,15 +8,21 @@
  * Factory in the debriefilatorApp.
  */
 app.factory('Postit', function () {
-	var postits = {};
+	var
+	postits = {},
+	curLayout;
 
     // Public API here
     return {
-		// init the postit service with categories
-		init: function(categories) {
-			categories.forEach(function(cat) {
-				postits[cat] = [];
+		// init the postit service with a layout
+		init: function(layout) {
+			curLayout = layout;
+			layout.forEach(function(column) {
+				postits[column.name] = [];
 			});
+		},
+		layout: function() {
+			return curLayout;
 		},
 		add: function(category, text) {
 			if (!postits[category]) {

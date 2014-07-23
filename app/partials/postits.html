@@ -1,4 +1,4 @@
-<div class="postits-area" ng-style="{{column.style}}">
+<div class="postits-area" ng-style="{'background-color': column.color}">
   <div ng-repeat="postit in postits | filter:search" ng-include="'partials/postit.html'" ng-animate="'animate'" >
 </div>
 <div class="postits-header" >
