@@ -14,4 +14,5 @@ app.use('/api', require('./api'));
 
 
 //create node.js http server and listen on port
-http.createServer(app).listen(3000);
+http.createServer(app).listen(process.env.PORT || 3000);
+console.log('server start on port ', process.env.PORT || 3000);
