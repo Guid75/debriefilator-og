@@ -3,4 +3,5 @@
 *.swp
 /.tmp
 .tern-port
+/dist
 *~

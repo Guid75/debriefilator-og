@@ -393,6 +393,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('heroku', ['jshint']);
+  grunt.registerTask('heroku:production', ['jshint', 'build']);
 
   grunt.registerTask('build', [
     'clean:dist',
