@@ -34,8 +34,11 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 		});
 
 		modalInstance.result.then(function (sessionCfg) {
-			Postit.init(sessionCfg.layout);
-			$state.transitionTo('session', null, { reload: true });
+			Session.add(sessionCfg).then(function(sessionId) {
+				Session.initCurrent(sessionId, sessionCfg);
+				Postit.clear();
+				$state.transitionTo('session', null, { reload: true });
+			});
 		});
 		return false;
 	};
@@ -43,11 +46,5 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 	$scope.joinSession = function() {
 		$state.transitionTo('sessions');
 		Session.list();
-	};
-});
-
-app.filter('categoriescaption', function() {
-	return function(category) {
-		return category.map(function(cat) { return cat.name; }).join('/');
 	};
 });

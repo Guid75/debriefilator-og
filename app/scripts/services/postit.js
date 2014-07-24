@@ -7,7 +7,7 @@
  * # postit
  * Factory in the debriefilatorApp.
  */
-app.factory('Postit', function () {
+app.factory('Postit', function (Session) {
 	var
 	privateItems = {},
 	publicItems = {},
@@ -16,9 +16,9 @@ app.factory('Postit', function () {
     // Public API here
     return {
 		// init the postit service with a layout
-		init: function(layout) {
-			curLayout = layout;
-			layout.forEach(function(column) {
+		clear: function() {
+			curLayout = Session.current().layout;
+			curLayout.forEach(function(column) {
 				privateItems[column.name] = [];
 				publicItems[column.name] = [];
 			});
