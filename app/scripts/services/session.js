@@ -7,7 +7,7 @@
  * # postit
  * Factory in the debriefilatorApp.
  */
-app.factory('Session', function ($http, $log) {
+app.factory('Session', function ($http) {
 	var session;
 	// Public API here
 	return {
@@ -19,8 +19,23 @@ app.factory('Session', function ($http, $log) {
 			session = {
 				id: sessionId,
 				name: sessionCfg.name,
-				layout: sessionCfg.layout
+				layout: sessionCfg.layout,
+				notes: sessionCfg.notes
 			};
+		},
+
+		join: function(sessionId) {
+			return $http({
+				method: 'GET',
+				url: '/api/session/' + sessionId
+				// TODO add a pool of users for the joining site
+			}).then(function(result) {
+				this.initCurrent(sessionId, {
+					name: result.data.session.name,
+					layout: result.data.session.layout,
+					notes: result.data.session.notes
+				});
+			}.bind(this));
 		},
 
 		add: function(sessionCfg) {
@@ -43,20 +58,6 @@ app.factory('Session', function ($http, $log) {
 					name: name
 				}
 			});
-		}// ,
-		// list: function() {
-		// 	return $http({
-		// 		method: 'get',
-		// 		url: '/api/sessions'
-		// 	}).then(function (result) {
-
-		// 		this.sessions.splice(0);
-		// 		$log.log(result);
-		// 		Array.prototype.push.apply(this.sessions, result.data);
-
-		// 		return this.sessions;
-
-		// 	}.bind(this));
-		// }
+		}
 	};
 });

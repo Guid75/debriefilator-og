@@ -4,15 +4,15 @@
 <div class="modal-body">
   <form>
 	<div class="form-group">
-	  <label for="yourName">Enter your name (optional):</label>
-      <input type="text" class="form-control" id="yourName"
-			 placeholder="Username" ng-model="session.userName"
-			 entervalidation="save()">
-	</div>
-	<div class="form-group">
 	  <label for="sessionName">Enter a name for this session (optional):</label>
       <input type="text" class="form-control" id="sessionName"
 			 placeholder="Session name" ng-model="session.sessionName"
+			 entervalidation="save()">
+	</div>
+	<div class="form-group">
+	  <label for="yourName">Enter your name (optional):</label>
+      <input type="text" class="form-control" id="yourName"
+			 placeholder="Username" ng-model="session.userName"
 			 entervalidation="save()">
 	</div>
 	<div class="form-group">

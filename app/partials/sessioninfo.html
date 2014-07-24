@@ -1,7 +1,7 @@
 <form>
   <div class="form-group input-group-sm">
 	<label for="join-url-field">Session URL:</label>
-	<input id="join-url-field" class="form-control uneditable-input" value="http://localhost:9000/session/{{session.id}}"></input>
+	<input id="join-url-field" class="form-control uneditable-input" value="{{getDirectLink()}}"></input>
   </div>
   <div class="form-group input-group-sm">
 	<button type="button" class="btn btn-default" ng-click="nextStep()">Next step</button>

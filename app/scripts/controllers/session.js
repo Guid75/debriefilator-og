@@ -17,4 +17,7 @@ app.controller('SessionCtrl', function ($scope, Postit, Session) {
 	$scope.nextStep = function() {
 		$scope.stepNo++;
 	};
+	$scope.getDirectLink = function() {
+		return document.location.href;
+	};
 });

@@ -88,7 +88,7 @@ postit-layout {
 	top: 0px;
 	left: 0px;
 	overflow: hidden;
-	box-shadow: 0px 2px 0px #999999;
+	box-shadow: 0px 2px 2px #999999;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -138,8 +138,6 @@ postit-layout {
 	padding: 4px;
 	font-size: 85%;
 	background: #FFFC7F;
-	-moz-box-shadow: 2px 2px 2px #999999;
-	-webkit-box-shadow: 2px 2px 2px #999999;
 	box-shadow: 2px 2px 2px #999999;
 	float: left;
 	margin: 5px;

@@ -12,6 +12,9 @@ function Session(config) {
 	if (config.name) {
 		this.name = config.name;
 	}
+	this.layout = config.layout;
+	this.notes = {};
+	this.round = 0;
 }
 
 function isNameUniq(name) {
@@ -20,9 +23,51 @@ function isNameUniq(name) {
 	});
 }
 
+function sessionById(id) {
+	var res;
+	sessions.some(function(session) {
+		if (session.id === id) {
+			res = session;
+			return true;
+		}
+		return false;
+	});
+	return res;
+}
+
+function noteById(session, noteId) {
+	for (var column in session.notes) {
+		var res;
+		var columnNotes = session.notes[column];
+		if (columnNotes.some(function(note) {
+			if (note.id === noteId) {
+				res = note;
+				return true;
+			}
+			return false;
+		})) {
+			return res;
+		}
+	}
+	return null;
+}
+
+function removeNote(session, noteId) {
+	for (var column in session.notes) {
+		var columnNotes = session.notes[column];
+		for (var i = 0; i < columnNotes.length; i++) {
+			if (columnNotes[i].id === noteId) {
+				columnNotes.splice(i, 1);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 app.post('/join/:sessionid', function (req, res) {
 	console.log(req.param('sessionid'));
-	res.send(200, { success: true });
+	res.send(200, {});
 });
 
 app.post('/new', function(req, res) {
@@ -35,36 +80,82 @@ app.post('/new', function(req, res) {
 
 	sessions.push(session);
 	res.send(200, {
-		sessionId: session.id,
-		success: true
+		sessionId: session.id
 	});
 });
 
 app.all('/:sessionid', function(req, res) {
+	var session = sessionById(req.param('sessionid'));
+	if (!session) {
+		res.send(404, { error: 'session not found' });
+		return;
+	}
+
 	res.send(200, {
-		sessionId: req.param('sessionid'),
-		success: true
+		session: {
+			id: session.id,
+			name: session.name,
+			layout: session.layout,
+			notes: session.notes,
+			round: session.round
+		}
 	});
 });
 
-app.all('/:sessionid/postits', function(req, res) {
+app.all('/:sessionid/notes', function(req, res) {
+	var session = sessionById(req.param('sessionid'));
+	if (!session) {
+		res.send(404, { error: 'session not found' });
+		return;
+	}
+
 	res.send(200, {
-		sessionId: req.param('sessionid'),
-		success: true
+		notes: session.notes
 	});
 });
 
-app.all('/:sessionid/postit/remove/:postitid', function(req, res) {
+app.all('/:sessionid/note/new', function(req, res) {
+	var session = sessionById(req.param('sessionid'));
+	if (!session) {
+		res.send(404, { error: 'session not found' });
+		return;
+	}
+
+	var note = {
+		id: uuid.v1(),
+		text: req.body.text
+	};
+	if (!session.notes[req.body.column]) {
+		session.notes[req.body.column] = [];
+	}
+	session.notes[req.body.column].push(note);
+
 	res.send(200, {
-		sessionId: req.param('sessionid'),
-		postitId: req.param('postitid'),
-		success: true
+		noteId: note.id
 	});
 });
 
-// api/session/654564 => donne toutes les infos sur la session : step courant, les postits, etc
+app.all('/:sessionid/note/remove/:noteid', function(req, res) {
+	var session = sessionById(req.param('sessionid'));
+	if (!session) {
+		res.send(404, { error: 'session not found' });
+		return;
+	}
+
+	var note = noteById(session, req.param('noteid'));
+	if (!note) {
+		res.send(404, { error: 'note not found' });
+		return;
+	}
+
+	if (removeNote(session, req.param('noteid'))) {
+		res.send(200, {});
+	}
+	res.send(500, { error: 'internal error' });
+});
 
 // api/session/654564/postits => donne tous les postits sur la session
 // api/session/654564/postit/new => cree un nouveau postit
 // api/session/654564/postit/list => liste tous les postits
 // api/session/654564/postit/remove/32654 => supprime un postit
+// api/session/654564/nextround

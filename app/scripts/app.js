@@ -33,7 +33,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			template: '<div>Welcome!</div>'
 		})
 	    .state('session', {
-			url: '/session',
+			url: '/session/:sessionid',
 			templateUrl: 'views/session.html',
 			controller: 'SessionCtrl'
 		})

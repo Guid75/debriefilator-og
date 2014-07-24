@@ -36,15 +36,37 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 		modalInstance.result.then(function (sessionCfg) {
 			Session.add(sessionCfg).then(function(sessionId) {
 				Session.initCurrent(sessionId, sessionCfg);
-				Postit.clear();
-				$state.transitionTo('session', null, { reload: true });
+				Postit.init();
+				$state.transitionTo('session', { sessionid: sessionId }, { reload: true });
 			});
 		});
-		return false;
 	};
 
 	$scope.joinSession = function() {
-		$state.transitionTo('sessions');
-		Session.list();
+		var modalInstance = $modal.open({
+			templateUrl: 'partials/joinsession.html',
+			controller: ['$scope', function($scope) {
+				$scope.session = {
+					sessionName: ''
+				};
+				$scope.cancel = function() {
+					$scope.$dismiss();
+				};
+
+				$scope.join = function() {
+					$scope.$close($scope.session);
+				};
+			}]
+		});
+
+		modalInstance.result.then(function (sessionCfg) {
+			Session.join(sessionCfg.sessionName)
+			.then(function() {
+				Postit.init();
+				$state.transitionTo('session', sessionCfg.sessionName, { reload: true });
+			}, function() {
+				// TODO: display an error
+			});
+		});
 	};
 });
