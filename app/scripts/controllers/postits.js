@@ -8,15 +8,16 @@
  * Controller of the debriefilatorApp
  */
 app.controller('PostitsCtrl', function ($scope, Postit) {
-	var postitType = $scope.$parent.column.name;
-	$scope.postits = Postit.list(postitType);
-
-	$scope.addPostit = function() {
-		Postit.add(postitType, 'Enter your remark here');
+	$scope.postits = function(column) {
+		return Postit.list(column, $scope.postitsScope);
 	};
 
-	$scope.deletePostit = function(index) {
-		Postit.delete(postitType, index);
+	$scope.addNote = function(column) {
+		Postit.add(column, 'Enter your remark here', $scope.postitsScope);
+	};
+
+	$scope.deletePostit = function(column, index) {
+		Postit.delete(column, index, $scope.postitsScope);
 	};
 });
 

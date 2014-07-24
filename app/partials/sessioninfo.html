@@ -1,6 +1,9 @@
 <form>
-  <div class="form-group">
+  <div class="form-group input-group-sm">
 	<label for="join-url-field">Session URL:</label>
-	<intput id="join-url-field" class="form-control uneditable-input">http://localhost:9000/session/123654</input>
+	<input id="join-url-field" class="form-control uneditable-input" value="http://localhost:9000/session/123654"></input>
+  </div>
+  <div class="form-group input-group-sm">
+	<button type="button" class="btn btn-default" ng-click="nextStep()">Next step</button>
   </div>
 </form>

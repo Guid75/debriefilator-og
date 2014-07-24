@@ -35,8 +35,9 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 
 		modalInstance.result.then(function (sessionCfg) {
 			Postit.init(sessionCfg.layout);
-			$state.go('session', null, { reload: true });
+			$state.transitionTo('session', null, { reload: true });
 		});
+		return false;
 	};
 
 	$scope.joinSession = function() {

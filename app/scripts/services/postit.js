@@ -9,7 +9,8 @@
  */
 app.factory('Postit', function () {
 	var
-	postits = {},
+	privateItems = {},
+	publicItems = {},
 	curLayout;
 
     // Public API here
@@ -18,34 +19,29 @@ app.factory('Postit', function () {
 		init: function(layout) {
 			curLayout = layout;
 			layout.forEach(function(column) {
-				postits[column.name] = [];
+				privateItems[column.name] = [];
+				publicItems[column.name] = [];
 			});
 		},
 		layout: function() {
 			return curLayout;
 		},
-		add: function(category, text) {
-			if (!postits[category]) {
-				console.error('category error');
-				return;
-			}
-			postits[category].push({
+		add: function(column, text, scope) {
+			var items = scope === 'public' ? publicItems : privateItems;
+			// TODO check the column validity
+			items[column].push({
 				text: text
 			});
 		},
-		delete: function(category, index) {
-			if (!postits[category]) {
-				console.error('category error');
-				return;
-			}
-			postits[category].splice(index, 1);
+		delete: function(column, index, scope) {
+			var items = scope === 'public' ? publicItems : privateItems;
+			// TODO check the column validity
+			items[column].splice(index, 1);
 		},
-		list: function(category) {
-			if (!postits[category]) {
-				console.error('category error');
-				return null;
-			}
-			return postits[category];
+		list: function(column, scope) {
+			var items = scope === 'public' ? publicItems : privateItems;
+			// TODO check the column validity
+			return items[column];
 		}
     };
 });

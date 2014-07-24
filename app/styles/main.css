@@ -16,6 +16,11 @@ body {
 	height: 100%;
 }
 
+.columns-wrapper {
+	height: 100%;
+	position: relative;
+}
+
 .postits-columns {
 	height: 100%;
 	padding-right: 400px;
@@ -64,24 +69,41 @@ body {
 	cursor: default;
 }
 
+postit-layout {
+	display: block;
+	position: relative;
+}
+
+.public-private {
+	height: 100%;
+	position: relative;
+}
+
 .postits-header {
-	height: 3em;
+	height: 45px;
+	line-height: 45px;
 	background-color: #FFF;
 	width: 100%;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	overflow: hidden;
-	box-shadow: 2px 2px 2px #999999;
+	box-shadow: 0px 2px 0px #999999;
 	padding-left: 10px;
-	padding-top: 5px;
+	padding-right: 10px;
 }
 
 .postits-area {
 	height: 100%;
 	position: relative;
 	overflow: auto;
-	padding-top: 50px;
+	padding-top: 45px;
+}
+
+.postits-board {
+	height: 100%;
+	overflow: auto;
+	position: relative;
 }
 
 /* Customize container */
@@ -107,16 +129,12 @@ body {
   .header {
     margin-bottom: 30px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
 }
 
 .postit {
 	border: 1px solid gray;
 	width: 150px;
-	height: 150px;
+	height: 100px;
 	padding: 4px;
 	font-size: 85%;
 	background: #FFFC7F;
@@ -140,22 +158,19 @@ body {
 
 .postit-editable {
 	cursor: pointer;
-    height: 120px;
+    height: 70px;
     overflow: hidden;
     position: relative;
     width: 100%;
 }
 
-.btn-positive {
-  background-color: #DFD
-}
-.btn-negative {
-  background-color: #FDD
+.postits-filter-zone {
+	float: right;
+	top: 6px;
+	vertical-align: middle;
+	width: 250px;
 }
 
 .postits-filter {
-	position: absolute;
-	right: 10px;
-	top: 5px;
-	width: 150px;
+/*	width: 450px;*/
 }
