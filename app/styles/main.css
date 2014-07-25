@@ -144,6 +144,14 @@ postit-layout {
 	position: relative;
 }
 
+.postit-dragged {
+	border: 1px solid black;
+}
+
+.column-dropped {
+	background-color: red;
+}
+
 .postit-toolbar {
 	font-weight: bold;
 	text-align: right;

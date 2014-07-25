@@ -18,7 +18,8 @@ var app = angular
 			'ngSanitize',
 			'ngTouch',
 			'ui.router',
-			'ui.bootstrap'
+			'ui.bootstrap',
+			'uuid4'
 		]);
 
 app.config(function($stateProvider, $urlRouterProvider) {

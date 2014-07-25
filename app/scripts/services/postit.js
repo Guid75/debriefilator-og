@@ -7,11 +7,41 @@
  * # postit
  * Factory in the debriefilatorApp.
  */
-app.factory('Postit', function ($http, Session) {
+app.factory('Postit', function ($http, Session, uuid4) {
 	var
 	privateItems = {},
 	publicItems = {},
 	curLayout;
+
+	function getNote(noteId, scope) {
+		var items = scope === 'public' ? publicItems : privateItems;
+
+		for (var column in items) {
+			var columnNotes = items[column];
+			for (var i = 0; i < columnNotes.length; i++) {
+				var note = columnNotes[i];
+				if (note.id === noteId) {
+					return note;
+				}
+			}
+		}
+		return null;
+	}
+
+	function getNoteIndex(noteId, scope) {
+		var items = scope === 'public' ? publicItems : privateItems;
+
+		for (var column in items) {
+			var columnNotes = items[column];
+			for (var i = 0; i < columnNotes.length; i++) {
+				var note = columnNotes[i];
+				if (note.id === noteId) {
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
 
     // Public API here
     return {
@@ -31,9 +61,20 @@ app.factory('Postit', function ($http, Session) {
 		layout: function() {
 			return curLayout;
 		},
+		getNoteId: function(column, index, scope) {
+			var items = scope === 'public' ? publicItems : privateItems;
+			return items[column][index].id;
+		},
+		getNoteText: function(noteId, scope) {
+			var note = getNote(noteId, scope);
+			if (note) {
+				return note.text;
+			}
+			return null;
+		},
 		add: function(column, text, scope) {
 			var items = scope === 'public' ? publicItems : privateItems;
-			// TODO check the column validity
+			// TODO check the parameters validity
 
 			if (scope === 'public') {
 				$http({
@@ -51,13 +92,19 @@ app.factory('Postit', function ($http, Session) {
 				});
 			} else {
 				items[column].push({
-					text: text
+					text: text,
+					id: uuid4.generate()
 				});
 			}
 		},
-		delete: function(column, index, scope) {
+		delete: function(column, noteId, scope) {
 			var items = scope === 'public' ? publicItems : privateItems;
-			// TODO check the column validity
+			var index = getNoteIndex(noteId, scope);
+			if (index < 0) {
+				// TODO raise an error
+				return;
+			}
+			// TODO check the parameters validity
 			if (scope === 'public') {
 				var note = items[column][index];
 				$http({
@@ -73,7 +120,7 @@ app.factory('Postit', function ($http, Session) {
 		},
 		list: function(column, scope) {
 			var items = scope === 'public' ? publicItems : privateItems;
-			// TODO check the column validity
+			// TODO check the parameters validity
 			return items[column];
 		}
     };
