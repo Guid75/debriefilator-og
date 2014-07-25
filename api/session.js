@@ -123,7 +123,8 @@ app.all('/:sessionid/note/new', function(req, res) {
 
 	var note = {
 		id: uuid.v1(),
-		text: req.body.text
+		text: req.body.text,
+		score: req.body.score
 	};
 	if (!session.notes[req.body.column]) {
 		session.notes[req.body.column] = [];

@@ -72,7 +72,14 @@ app.factory('Postit', function ($http, Session, uuid4) {
 			}
 			return null;
 		},
-		add: function(column, text, scope) {
+		getNoteScore: function(noteId, scope) {
+			var note = getNote(noteId, scope);
+			if (note) {
+				return note.score;
+			}
+			return null;
+		},
+		add: function(column, text, score, scope) {
 			var items = scope === 'public' ? publicItems : privateItems;
 			// TODO check the parameters validity
 
@@ -82,20 +89,27 @@ app.factory('Postit', function ($http, Session, uuid4) {
 					url: 'api/session/' + Session.current().id + '/note/new',
 					data: {
 						text: text,
+						score: score,
 						column: column
 					}
 				}).then(function(result) {
 					items[column].push({
 						text: text,
+						score: score,
 						id: result.data.noteId
 					});
 				});
 			} else {
 				items[column].push({
 					text: text,
+					score: score,
 					id: uuid4.generate()
 				});
 			}
+		},
+		incrementScore: function(column, noteId, scope) {
+			var note = getNote(noteId, scope);
+			note.score++;
 		},
 		delete: function(column, noteId, scope) {
 			var items = scope === 'public' ? publicItems : privateItems;

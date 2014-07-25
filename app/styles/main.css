@@ -154,18 +154,24 @@ postit-layout {
 
 .postit-toolbar {
 	font-weight: bold;
-	text-align: right;
 }
 
 .postit-delete {
 	cursor: pointer;
     font-size: 120%;
+	float: right;
+}
+
+.postit-increment {
+	cursor: pointer;
+    font-size: 100%;
+	float: left;
 }
 
 .postit-editable {
 	cursor: pointer;
     height: 70px;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
     width: 100%;
 }

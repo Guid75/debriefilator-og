@@ -13,11 +13,15 @@ app.controller('PostitsCtrl', function ($scope, $rootScope, Postit) {
 	};
 
 	$scope.addNote = function(column) {
-		Postit.add(column, 'Enter your remark here', $scope.postitsScope);
+		Postit.add(column, 'Enter your remark here', 1, $scope.postitsScope);
 	};
 
 	$scope.deleteNote = function(column, noteId) {
 		Postit.delete(column, noteId, $scope.postitsScope);
+	};
+
+	$scope.incrementScore = function(column, noteId) {
+		Postit.incrementScore(column, noteId, $scope.postitsScope);
 	};
 
 	$scope.$on('dropEvent', function(evt, dragged, dropped) {
@@ -32,7 +36,10 @@ app.controller('PostitsCtrl', function ($scope, $rootScope, Postit) {
 			return;
 		}
 
-		Postit.add(dropColumn, Postit.getNoteText(dragId, dragScope), dropScope);
+		Postit.add(dropColumn,
+				   Postit.getNoteText(dragId, dragScope),
+				   Postit.getNoteScore(dragId, dragScope),
+				   dropScope);
 		Postit.delete(dragColumn, dragId, dragScope);
         $scope.$apply();
     });
