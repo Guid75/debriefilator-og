@@ -18,33 +18,30 @@ var app = angular
 			'ngSanitize',
 			'ngTouch',
 			'ui.router',
-			'ui.bootstrap'
+			'ui.bootstrap',
+			'uuid4'
 		]);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 	//
 	// For any unmatched url, redirect to /state1
-	$urlRouterProvider.otherwise('/postits');
+	$urlRouterProvider.otherwise('/welcome');
 	//
 	// Now set up the states
 	$stateProvider
+		.state('welcome', {
+			url: '/welcome',
+			template: '<div>Welcome!</div>'
+		})
 	    .state('session', {
-			url: 'session',
-			views: {
-				'main': {
-					controller: 'SessionCtrl',
-					templateUrl: 'views/session.html'
-				}
-			}
+			url: '/session/:sessionid',
+			templateUrl: 'views/session.html',
+			controller: 'SessionCtrl'
 		})
 		.state('sessions', {
-			url: 'sessions',
-			views: {
-				'main': {
-					controller: 'SessionsCtrl',
-					templateUrl: 'views/sessions.html'
-				}
-			}
+			url: '/sessions',
+			templateUrl: 'views/sessions.html',
+			controller: 'SessionsCtrl'
 		});
 });
 

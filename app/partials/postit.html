@@ -1,8 +1,8 @@
-<div class="postit">
+<div class="postit" drag="" dragData="{{note.id}}/{{column.name}}/{{postitsScope}}" dragStyle="postit-dragged">
   <div class="postit-toolbar">
-	<span class="postit-delete" title="close" ng-click="deletePostit($index)">x</span>
+	<span class="label label-success postit-increment" title="close" ng-click="incrementScore(column.name, note.id)">+{{note.score}}</span>
+	<span class="postit-delete" title="close" ng-click="deleteNote(column.name, note.id)">x</span>
   </div>
-  <div class="postit-editable" contenteditable initfocus strip-br="true" ng-model="postit.text">
-  <!-- <div class="postit-editable" contenteditable strip-br="true" ng-model="postit.text"> -->
+  <div class="postit-editable" contenteditable initfocus strip-br="true" ng-model="note.text">
   </div>
 </div>

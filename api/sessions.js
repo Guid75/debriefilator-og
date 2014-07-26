@@ -10,8 +10,4 @@ app.use('/sessions', function (req, res) {
   });
 });
 
-app.use('/session', function (req, res) {
-  res.json({
-    message: '/session not yep implemented!'
-  });
-});
+app.use('/session', require('./session'));

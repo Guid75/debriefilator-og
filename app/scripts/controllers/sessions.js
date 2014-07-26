@@ -34,16 +34,41 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 		});
 
 		modalInstance.result.then(function (sessionCfg) {
-			Postit.init(sessionCfg.layout);
-			$state.go('session', null, { reload: true });
+			Session.add(sessionCfg).then(function(sessionId) {
+				Session.initCurrent(sessionId, sessionCfg);
+				Postit.init();
+				$state.transitionTo('session', { sessionid: sessionId }, { reload: true });
+			});
 		});
 	};
 
 	$scope.joinSession = function() {
-		$state.transitionTo('sessions');
-		Session.list();
+		var modalInstance = $modal.open({
+			templateUrl: 'partials/joinsession.html',
+			controller: ['$scope', function($scope) {
+				$scope.session = {
+					sessionName: ''
+				};
+				$scope.cancel = function() {
+					$scope.$dismiss();
+				};
+
+				$scope.join = function() {
+					$scope.$close($scope.session);
+				};
+			}]
+		});
+
+		modalInstance.result.then(function (sessionCfg) {
+			Session.join(sessionCfg.sessionName)
+			.then(function() {
+				Postit.init();
+				$state.transitionTo('session', sessionCfg.sessionName, { reload: true });
+			}, function() {
+				// TODO: display an error
+			});
+		});
 	};
-});
 
 app.controller('ChatCtrl', function ($scope) {
 
@@ -66,11 +91,5 @@ app.controller('ChatCtrl', function ($scope) {
 			text: result.data
 		});
 		$scope.$apply();
-	};
-});
-
-app.filter('categoriescaption', function() {
-	return function(category) {
-		return category.map(function(cat) { return cat.name; }).join('/');
 	};
 });

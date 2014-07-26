@@ -1,6 +1,13 @@
-<label>Session: 1324654</label>
+<form>
+  <div class="form-group input-group-sm">
+	<label for="join-url-field">Session URL:</label>
+	<input id="join-url-field" class="form-control uneditable-input" value="{{getDirectLink()}}"></input>
+  </div>
+  <div class="form-group input-group-sm">
+	<button type="button" class="btn btn-default" ng-click="nextStep()">Next step</button>
+  </div>
+</form>
 <input ng-model="data.message"><button ng-click="addMessage()" >&gt;&gt;</button>
-
 <div ng-repeat="message in data.messages">
 	<div>message: <span ng-bind="message.text"></span></div>
 </div>

@@ -1,0 +1,23 @@
+<div class="postits-columns">
+  <div class="columns-wrapper" ng-controller="PostitsCtrl">
+	<div ng-repeat="column in layout"
+		 ng-include="'partials/postits.html'" class="postits"
+		 style="width: {{getWidthStyle()}};"
+		 postit-type="{{column.name}}">
+	</div>
+	<div class="postits-header" >
+	  <div class="btn-group btn-group-sm">
+		<button type="button"
+				ng-repeat="column in layout"
+				class="btn btn-default"
+				ng-click="addNote(column.name)"
+				style="background-color: {{column.color}};">
+		  New {{column.name}} note</button>
+	  </div>
+	  <div class="input-group input-group-sm postits-filter-zone">
+  		<input type="text" class="form-control postits-filter" ng-model="search.$"
+  			   placeholder="Enter a filter">
+	  </div>
+	</div>
+  </div>
+</div>

@@ -1,13 +1,5 @@
-<div class="session">
-  <div class="postits-columns">
-	<div ng-repeat="column in layout"
-		 ng-include="'partials/postits.html'" class="postits"
-		 style="width: {{getWidthStyle()}};"
-		 postit-type="{{column.name}}" ng-controller="PostitsCtrl">
-	</div>
-  </div>
-  <div class="session-info" ng-include="'partials/sessioninfo.html'" ng-controller="ChatCtrl">
-  </div>
+<div class="session" ng-include="'views/session-' + stepNo + '.html'">
+<div class="session-info" ng-include="'partials/sessioninfo.html'" ng-controller="ChatCtrl">
 </div>
 <!-- <div class="postits-header" > -->
 <!--   <input type="text" ng-model="newPostit.text" placeholder="Post-it message" />&nbsp; -->

@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3 class="modal-title">New retrospective session</h3>
+</div>
+<div class="modal-body">
+  <form>
+	<div class="form-group">
+	  <label for="sessionName">Enter the session UUID:</label>
+      <input type="text" class="form-control" id="sessionName"
+			 placeholder="Session name" ng-model="session.sessionName"
+			 entervalidation="save()">
+	</div>
+  </form>
+  </div>
+  <div class="modal-footer">
+	<button class="btn btn-primary" ng-click="join()">Join session</button>
+	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
