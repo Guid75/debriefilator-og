@@ -70,3 +70,27 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 		});
 	};
 });
+
+app.controller('ChatCtrl', function ($scope) {
+
+	/* global: SockJS */
+	var chat = new SockJS('/chat');
+
+	$scope.addMessage = function () {
+		chat.send($scope.data.message);
+		$scope.data.message = '';
+	};
+
+	$scope.data = {
+		message: '',
+		messages: []
+	};
+
+	chat.onmessage = function (result) {
+		console.log('message', result.data);
+		$scope.data.messages.push({
+			text: result.data
+		});
+		$scope.$apply();
+	};
+});

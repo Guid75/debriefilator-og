@@ -70,25 +70,29 @@ module.exports = function (grunt) {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35729,
+        onCreateServer: function(server) {
+         console.log('onCreateServer > start chat');
+         require('./api/chat')(server);
+        },
+        middleware: function (connect) {
+          return [
+            connect.static('.tmp'),
+            connect().use(
+              '/bower_components',
+              connect.static('./bower_components')
+            ),
+            connect().use(
+              '/api',
+              require('./api')
+            ),
+            connect.static(appConfig.app)
+          ];
+        }
       },
       livereload: {
         options: {
-          open: true,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/api',
-                require('./api')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
+          open: true
         }
       },
       test: {

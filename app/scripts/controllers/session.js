@@ -10,6 +10,9 @@
 app.controller('SessionCtrl', function ($scope, Postit, Session) {
 	$scope.stepNo = 0;
 	$scope.layout = Postit.layout();
+
+	$scope.messages = ['welcome to the chat'];
+
 	$scope.session = Session.current();
 	$scope.getWidthStyle = function() {
 		return (100 / $scope.layout.length) + '%';
