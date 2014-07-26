@@ -72,9 +72,9 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729,
         onCreateServer: function(server) {
-	  console.log('onCreateServer > start chat');
-	  require('./api/chat')(server);
-	},
+         console.log('onCreateServer > start chat');
+         require('./api/chat')(server);
+        },
         middleware: function (connect) {
           return [
             connect.static('.tmp'),

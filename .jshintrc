@@ -20,7 +20,7 @@
   "smarttabs": true,
   "globals": {
     "angular": false,
-		"SockJS": false,
-		"app": false
+    "SockJS": false,
+    "app": false
   }
 }
