@@ -2,7 +2,8 @@ debriefilator
 =============
 
 A simple SCRUM retrospective tool
-[![Dependancy](http://img.shields.io/david/Guid75/debriefilator.svg)
+
+![Dependancy](http://img.shields.io/david/Guid75/debriefilator.svg)
 
 Install
 =======
