@@ -53,24 +53,7 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 					$scope.$dismiss();
 				};
 
-				$scope.join = function() {
-					$scope.$close($scope.session);
-				};
-			}]
-		});
-
-		modalInstance.result.then(function (sessionCfg) {
-			Session.join(sessionCfg.sessionName)
-			.then(function() {
-				Postit.init();
-				$state.transitionTo('session', sessionCfg.sessionName, { reload: true });
-			}, function() {
-				// TODO: display an error
-			});
-		});
-	};
-});
-
+<<<<<<< HEAD
 app.controller('ChatCtrl', function ($scope) {
 
 	/* global: SockJS */
@@ -92,5 +75,28 @@ app.controller('ChatCtrl', function ($scope) {
 			text: result.data
 		});
 		$scope.$apply();
+	};
+});
+
+app.filter('categoriescaption', function() {
+	return function(category) {
+		return category.map(function(cat) { return cat.name; }).join('/');
+=======
+				$scope.join = function() {
+					$scope.$close($scope.session);
+				};
+			}]
+		});
+
+		modalInstance.result.then(function (sessionCfg) {
+			Session.join(sessionCfg.sessionName)
+			.then(function() {
+				Postit.init();
+				$state.transitionTo('session', sessionCfg.sessionName, { reload: true });
+			}, function() {
+				// TODO: display an error
+			});
+		});
+>>>>>>> master
 	};
 });

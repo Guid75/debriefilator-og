@@ -7,7 +7,5 @@
 	<button type="button" class="btn btn-default" ng-click="nextStep()">Next step</button>
   </div>
 </form>
-<input ng-model="data.message"><button ng-click="addMessage()" >&gt;&gt;</button>
-<div ng-repeat="message in data.messages">
-	<div>message: <span ng-bind="message.text"></span></div>
+<div class="chat" ng-include="'partials/chat.html'" ng-controller="ChatCtrl">
 </div>
