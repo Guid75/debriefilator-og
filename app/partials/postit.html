@@ -1,14 +1,17 @@
-<div class="postit" drag="" dragData="{{note.id}}/{{column.name}}/{{postitsScope}}" dragStyle="postit-dragged">
+<div class="postit" drag=""
+	 dragData="{{note.id}}/{{column.name}}/{{postitsScope}}"
+	 dragStyle="postit-dragged" ng-mouseenter="showbuttons = true"
+	 ng-mouseleave="showbuttons = false">
   <div class="postit-toolbar">
 	<span class="postit-delete" title="close" ng-click="deleteNote(column.name, note.id)">x</span>
   </div>
   <div class="postit-editable" contenteditable initfocus strip-br="true" ng-model="note.text">
   </div>
-  <div class="postit-toolbar" ng-mouseenter="showbuttons = true"
-	   ng-mouseleave="showbuttons = false">
+  <div class="postit-toolbar" >
 	<span class="label label-success postit-increment"
 		  ng-click="incrementScore(column.name,
-					note.id)" title="+1" >{{showbuttons ? note.score + '+' : note.score}}</span>
+					note.id)" title="+1" ng-show="showbuttons ||
+		  note.score > 1" >{{showbuttons ? note.score + '+' : note.score}}</span>
 	<span class="label label-warning postit-increment" title="-1"
 		  ng-click="decrementScore(column.name,
 					note.id)" ng-show="showbuttons && note.score > 1">-</span>
