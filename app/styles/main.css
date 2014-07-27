@@ -134,7 +134,7 @@ postit-layout {
 .postit {
 	border: 1px solid gray;
 	width: 150px;
-	height: 100px;
+	height: 120px;
 	padding: 4px;
 	font-size: 85%;
 	background: #FFFC7F;
@@ -142,6 +142,7 @@ postit-layout {
 	float: left;
 	margin: 5px;
 	position: relative;
+	border-radius: 4px;
 }
 
 .postit-dragged {
@@ -154,12 +155,18 @@ postit-layout {
 
 .postit-toolbar {
 	font-weight: bold;
+	height: 20px;
 }
 
 .postit-delete {
 	cursor: pointer;
     font-size: 120%;
 	float: right;
+}
+
+.postit-score {
+    font-size: 100%;
+	float: left;
 }
 
 .postit-increment {
@@ -174,6 +181,7 @@ postit-layout {
     overflow: auto;
     position: relative;
     width: 100%;
+	margin-bottom: 3px;
 }
 
 .postits-filter-zone {
