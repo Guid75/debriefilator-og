@@ -72,19 +72,19 @@ function removeNote(session, noteId) {
 
 app.post('/join/:sessionid', function (req, res) {
 	console.log(req.param('sessionid'));
-	res.send(200, {});
+	res.status(200).send({});
 });
 
 app.post('/new', function(req, res) {
 	var session = new Session(req.body);
 
 	if (session.name && !isNameUniq(session.name)) {
-		res.send(403, { error: 'Name collision' });
+		res.status(403).send({ error: 'Name collision' });
 		return;
 	}
 
 	sessions.push(session);
-	res.send(200, {
+	res.status(200).send({
 		sessionId: session.id
 	});
 });
@@ -92,11 +92,11 @@ app.post('/new', function(req, res) {
 app.all('/:sessionid', function(req, res) {
 	var session = sessionById(req.param('sessionid'));
 	if (!session) {
-		res.send(404, { error: 'session not found' });
+		res.status(404).send({ error: 'session not found' });
 		return;
 	}
 
-	res.send(200, {
+	res.status(200).send({
 		session: {
 			id: session.id,
 			name: session.name,
@@ -110,11 +110,11 @@ app.all('/:sessionid', function(req, res) {
 app.all('/:sessionid/notes', function(req, res) {
 	var session = sessionById(req.param('sessionid'));
 	if (!session) {
-		res.send(404, { error: 'session not found' });
+		res.status(404).send({ error: 'session not found' });
 		return;
 	}
 
-	res.send(200, {
+	res.status(200).send({
 		notes: session.notes
 	});
 });
@@ -122,7 +122,7 @@ app.all('/:sessionid/notes', function(req, res) {
 app.all('/:sessionid/note/new', function(req, res) {
 	var session = sessionById(req.param('sessionid'));
 	if (!session) {
-		res.send(404, { error: 'session not found' });
+		res.status(404).send({ error: 'session not found' });
 		return;
 	}
 
@@ -136,7 +136,7 @@ app.all('/:sessionid/note/new', function(req, res) {
 	}
 	session.notes[req.body.column].push(note);
 
-	res.send(200, {
+	res.status(200).send({
 		noteId: note.id
 	});
 });
@@ -144,20 +144,21 @@ app.all('/:sessionid/note/new', function(req, res) {
 app.all('/:sessionid/note/remove/:noteid', function(req, res) {
 	var session = sessionById(req.param('sessionid'));
 	if (!session) {
-		res.send(404, { error: 'session not found' });
+		res.status(404).send({ error: 'session not found' });
 		return;
 	}
 
 	var note = noteById(session, req.param('noteid'));
 	if (!note) {
-		res.send(404, { error: 'note not found' });
+		res.status(404).send({ error: 'note not found' });
 		return;
 	}
 
 	if (removeNote(session, req.param('noteid'))) {
-		res.send(200, {});
+		res.status(200).send({});
+		return;
 	}
-	res.send(500, { error: 'internal error' });
+	res.status(500).send({ error: 'internal error' });
 });
 
 // api/session/654564/postits => donne tous les postits sur la session

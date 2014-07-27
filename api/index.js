@@ -2,7 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = module.exports = express();
 
-app.use(bodyParser());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.use(require('./sessions'));
 
