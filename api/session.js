@@ -17,9 +17,14 @@ function Session(config) {
 	this.round = 0;
 }
 
+function sessionHaveName (session) {
+	return session.name && session.name.length;
+}
+
 function isNameUniq(name) {
-	return !sessions.some(function(session) {
-		return session.name.toUpperCase() === name.toUpperCase();
+	var uname = name.toUpperCase();
+	return !sessions.filter(sessionHaveName).some(function(session) {
+		return session.name.toUpperCase() === uname;
 	});
 }
 
