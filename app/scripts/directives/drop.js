@@ -6,7 +6,7 @@
  * @description
  * # drop
  */
-app.directive('drop', ['$rootScope', function($rootScope) {
+app.directive('drop', function($rootScope) {
 
 	function dragEnter(evt, element, dropStyle) {
 		evt.preventDefault();
@@ -41,4 +41,4 @@ app.directive('drop', ['$rootScope', function($rootScope) {
 			});
 		}
 	};
-}]);
+});

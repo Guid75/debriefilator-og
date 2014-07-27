@@ -6,7 +6,7 @@
  * @description
  * # drag
  */
-app.directive('drag', ['$rootScope', function($rootScope) {
+app.directive('drag', function($rootScope) {
 	function dragStart(evt, element, dragStyle) {
 		element.addClass(dragStyle);
 		evt.dataTransfer.setData('id', evt.target.id);
@@ -31,4 +31,4 @@ app.directive('drag', ['$rootScope', function($rootScope) {
 			});
 		}
 	};
-}]);
+});
