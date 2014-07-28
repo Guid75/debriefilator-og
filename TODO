@@ -1,12 +1,14 @@
 La priorité de chaque tâche est entre crochets.
 
 - [important] Stoquer les notes privées de la session courante dans le localstorage
+- [important] plugin les events des postits sur socket.io
 
 - [moyen] Comment stoquer la session courante ? Un service ? Pour l'instant, c'est le service "Session" qui s'occupe d'instancier les sessions et qui en plus stoque la session courante, bof.
 - [moyen] Splitter le service "Postit" en deux services : private & public pour simplifier le code
 - [moyen] Loading mask pour les opérations asynchrones
 - [moyen] Lorsqu'on modifie une note publique, updater régulièrement le contenu de la note avec l'API
 - [moyen] Lorsqu'on valide une note (qu'on sort le focus), on perd la possibilité d'annuler l'édition, tant qu'on a pas validé la note, "ESC" devrait remettre l'ancien contenu
+- [moyen] Gérer l'UNDO (et REDO en bonus)
 
 - [faible] Utiliser des petits carrés de couleur pour la représentation des postitslayout dans la combobox de choix
 - [faible] Les topbar des zones de postits devraient être flottantes pour être toujours visible même quand on scroll les postits
