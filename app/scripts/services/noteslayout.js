@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name debriefilatorApp.PostitsLayout
+ * @name debriefilatorApp.NotesLayout
  * @description
- * # PostitsLayout
+ * # NotesLayout
  * Factory in the debriefilatorApp.
  */
-app.factory('PostitsLayout', function () {
+app.factory('NotesLayout', function () {
 	var layouts = [
 		[
 			{

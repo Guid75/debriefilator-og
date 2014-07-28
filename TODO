@@ -2,6 +2,7 @@ La priorité de chaque tâche est entre crochets.
 
 - [important] Stoquer les notes privées de la session courante dans le localstorage
 - [important] plugin les events des postits sur socket.io
+- [important] Grouper les postits
 
 - [moyen] Comment stoquer la session courante ? Un service ? Pour l'instant, c'est le service "Session" qui s'occupe d'instancier les sessions et qui en plus stoque la session courante, bof.
 - [moyen] Splitter le service "Postit" en deux services : private & public pour simplifier le code

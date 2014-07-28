@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name debriefilatorApp.postit
+ * @name debriefilatorApp.note
  * @description
- * # postit
+ * # note
  * Factory in the debriefilatorApp.
  */
-app.factory('Postit', function ($http, Session, uuid4) {
+app.factory('Note', function ($http, Session, uuid4) {
 	var
 	privateItems = {},
 	publicItems = {},
@@ -43,9 +43,7 @@ app.factory('Postit', function ($http, Session, uuid4) {
 		return -1;
 	}
 
-    // Public API here
     return {
-		// init the postit service with a layout
 		init: function() {
 			curLayout = Session.current().layout;
 			// clear private notes

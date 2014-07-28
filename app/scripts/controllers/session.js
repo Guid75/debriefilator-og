@@ -7,9 +7,9 @@
  * # SessionCtrl
  * Controller of the debriefilatorApp
  */
-app.controller('SessionCtrl', function ($scope, Postit, Session) {
+app.controller('SessionCtrl', function ($scope, Note, Session) {
 	$scope.stepNo = 0;
-	$scope.layout = Postit.layout();
+	$scope.layout = Note.layout();
 
 	$scope.messages = ['welcome to the chat'];
 

@@ -1,7 +1,7 @@
 <div class="postits-columns">
-  <div class="columns-wrapper" ng-controller="PostitsCtrl">
+  <div class="columns-wrapper" ng-controller="NotesCtrl">
 	<div ng-repeat="column in layout"
-		 ng-include="'partials/postits.html'" class="postits"
+		 ng-include="'partials/column.html'" class="notes-column"
 		 style="width: {{getWidthStyle()}};"
 		 postit-type="{{column.name}}">
 	</div>

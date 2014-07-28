@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc service
- * @name debriefilatorApp.postit
+ * @name debriefilatorApp.session
  * @description
- * # postit
+ * # session
  * Factory in the debriefilatorApp.
  */
 app.factory('Session', function ($http) {
@@ -32,7 +32,7 @@ app.factory('Session', function ($http) {
 		join: function(session) {
 			return $http({
 				method: 'GET',
-				url: '/api/session/' + session.sessionName 
+				url: '/api/session/' + session.sessionName
 				// TODO add a pool of users for the joining site
 			}).then(function(result) {
 				this.initCurrent(session.sessionName, {

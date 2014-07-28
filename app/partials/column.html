@@ -3,13 +3,13 @@
   <div class="background-area">
 	<div class="background-area-table">
 	  <div class="background-text" style="color: {{column.color | luminance:-0.15 }}">
-		<h1>{{column.name}} ({{postitsScope}})</h1>
+		<h1>{{column.name}} ({{notesScope}})</h1>
 	  </div>
 	</div>
   </div>
-  <div class="postits-board" drop drop-data="{{column.name}}/{{postitsScope}}">
+  <div class="postits-board" drop drop-data="{{column.name}}/{{notesScope}}">
 	<div ng-repeat="note in notes(column.name) | filter:search"
-		 ng-include="'partials/postit.html'" ng-animate="'animate'" >
+		 ng-include="'partials/note.html'" ng-animate="'animate'" >
 	</div>
   </div>
 </div>

@@ -2,30 +2,30 @@
 
 /**
  * @ngdoc function
- * @name debriefilatorApp.controller:PostitsCtrl
+ * @name debriefilatorApp.controller:NotesCtrl
  * @description
- * # PostitsCtrl
+ * # NotesCtrl
  * Controller of the debriefilatorApp
  */
-app.controller('PostitsCtrl', function ($scope, $rootScope, Postit) {
+app.controller('NotesCtrl', function ($scope, $rootScope, Note) {
 	$scope.notes = function(column) {
-		return Postit.list(column, $scope.postitsScope);
+		return Note.list(column, $scope.notesScope);
 	};
 
 	$scope.addNote = function(column) {
-		Postit.add(column, 'Enter your remark here', 1, $scope.postitsScope);
+		Note.add(column, 'Enter your remark here', 1, $scope.notesScope);
 	};
 
 	$scope.deleteNote = function(column, noteId) {
-		Postit.delete(column, noteId, $scope.postitsScope);
+		Note.delete(column, noteId, $scope.notesScope);
 	};
 
 	$scope.incrementScore = function(column, noteId) {
-		Postit.incrementScore(column, noteId, $scope.postitsScope);
+		Note.incrementScore(column, noteId, $scope.notesScope);
 	};
 
 	$scope.decrementScore = function(column, noteId) {
-		Postit.decrementScore(column, noteId, $scope.postitsScope);
+		Note.decrementScore(column, noteId, $scope.notesScope);
 	};
 
 	$scope.$on('dropEvent', function(evt, dragged, dropped) {
@@ -35,16 +35,16 @@ app.controller('PostitsCtrl', function ($scope, $rootScope, Postit) {
 		var dragScope = dragData[2];
 		var dropColumn = dropped.split('/')[0];
 		var dropScope = dropped.split('/')[1];
-		if (dropScope !== $scope.postitsScope) {
+		if (dropScope !== $scope.notesScope) {
 			// TODO dropEvent should be raised here
 			return;
 		}
 
-		Postit.add(dropColumn,
-				   Postit.getNoteText(dragId, dragScope),
-				   Postit.getNoteScore(dragId, dragScope),
-				   dropScope);
-		Postit.delete(dragColumn, dragId, dragScope);
+		Note.add(dropColumn,
+				 Note.getNoteText(dragId, dragScope),
+				 Note.getNoteScore(dragId, dragScope),
+				 dropScope);
+		Note.delete(dragColumn, dragId, dragScope);
         $scope.$apply();
     });
 });
