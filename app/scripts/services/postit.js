@@ -111,6 +111,12 @@ app.factory('Postit', function ($http, Session, uuid4) {
 			var note = getNote(noteId, scope);
 			note.score++;
 		},
+		decrementScore: function(column, noteId, scope) {
+			var note = getNote(noteId, scope);
+			if (note.score > 1) {
+				note.score--;
+			}
+		},
 		delete: function(column, noteId, scope) {
 			var items = scope === 'public' ? publicItems : privateItems;
 			var index = getNoteIndex(noteId, scope);

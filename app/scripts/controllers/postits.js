@@ -24,6 +24,10 @@ app.controller('PostitsCtrl', function ($scope, $rootScope, Postit) {
 		Postit.incrementScore(column, noteId, $scope.postitsScope);
 	};
 
+	$scope.decrementScore = function(column, noteId) {
+		Postit.decrementScore(column, noteId, $scope.postitsScope);
+	};
+
 	$scope.$on('dropEvent', function(evt, dragged, dropped) {
 		var dragData = dragged.split('/');
 		var dragId = dragData[0];
