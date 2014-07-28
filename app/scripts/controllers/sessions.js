@@ -34,10 +34,9 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 		});
 
 		modalInstance.result.then(function (sessionCfg) {
-			Session.add(sessionCfg).then(function(sessionId) {
-				Session.initCurrent(sessionId, sessionCfg);
+			Session.add(sessionCfg).then(function(session) {
 				Postit.init();
-				$state.transitionTo('session', { sessionid: sessionId }, { reload: true });
+				$state.transitionTo('session', { sessionid: session.id }, { reload: true });
 			});
 		});
 	};
@@ -45,9 +44,10 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 	$scope.joinSession = function() {
 		var modalInstance = $modal.open({
 			templateUrl: 'partials/joinsession.html',
-			controller: ['$scope', function($scope) {
+			controller: function($scope) {
 				$scope.session = {
-					sessionName: ''
+					sessionName: '',
+					userName: ''
 				};
 				$scope.cancel = function() {
 					$scope.$dismiss();
@@ -56,11 +56,11 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 				$scope.join = function() {
 					$scope.$close($scope.session);
 				};
-			}]
+			}
 		});
 
 		modalInstance.result.then(function (sessionCfg) {
-			Session.join(sessionCfg.sessionName)
+			Session.join(sessionCfg)
 			.then(function() {
 				Postit.init();
 				$state.transitionTo('session', sessionCfg.sessionName, { reload: true });
@@ -71,26 +71,3 @@ app.controller('SessionsCtrl', function ($scope, $modal, $state, Session, Postit
 	};
 });
 
-app.controller('ChatCtrl', function ($scope) {
-
-	/* global: SockJS */
-	var chat = new SockJS('/chat');
-
-	$scope.addMessage = function () {
-		chat.send($scope.data.message);
-		$scope.data.message = '';
-	};
-
-	$scope.data = {
-		message: '',
-		messages: []
-	};
-
-	chat.onmessage = function (result) {
-		console.log('message', result.data);
-		$scope.data.messages.push({
-			text: result.data
-		});
-		$scope.$apply();
-	};
-});

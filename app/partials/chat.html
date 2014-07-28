@@ -2,6 +2,6 @@
 	<input ng-model="data.message" class="form-control" placeholder="Press Enter to send your message">
 	<input type="submit" style="position: absolute; left: -9999px;" >
 	<div ng-repeat="message in data.messages">
-		<div>message: <span ng-bind="message.text"></span></div>
+		<div ng-bind="message.text"></div>
 	</div>
 </form>

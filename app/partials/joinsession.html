@@ -3,12 +3,16 @@
 </div>
 <div class="modal-body">
   <form>
-	<div class="form-group">
-	  <label for="sessionName">Enter the session UUID:</label>
+    <div class="form-group">
+      <label for="sessionName">Enter the session UUID:</label>
       <input type="text" class="form-control" id="sessionName"
 			 placeholder="Session name" ng-model="session.sessionName"
 			 entervalidation="save()">
-	</div>
+      <label for="userName">Enter your name:</label>
+      <input type="text" class="form-control" id="userName"
+			 placeholder="Your name" ng-model="session.userName"
+			 entervalidation="save()">
+    </div>
   </form>
   </div>
   <div class="modal-footer">

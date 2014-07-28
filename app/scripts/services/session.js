@@ -22,15 +22,21 @@ app.factory('Session', function ($http) {
 				layout: sessionCfg.layout,
 				notes: sessionCfg.notes
 			};
+			session.username = sessionCfg.userName ? sessionCfg.userName :'Jon Doe';
 		},
 
-		join: function(sessionId) {
+		getUserName: function () {
+			return this.current().username;
+		},
+
+		join: function(session) {
 			return $http({
 				method: 'GET',
-				url: '/api/session/' + sessionId
+				url: '/api/session/' + session.sessionName 
 				// TODO add a pool of users for the joining site
 			}).then(function(result) {
-				this.initCurrent(sessionId, {
+				this.initCurrent(session.sessionName, {
+					userName: session.userName,
 					name: result.data.session.name,
 					layout: result.data.session.layout,
 					notes: result.data.session.notes
@@ -47,8 +53,9 @@ app.factory('Session', function ($http) {
 					layout: sessionCfg.layout
 				}
 			}).then(function(result) {
-				return result.data.sessionId;
-			});
+				this.initCurrent(result.data.sessionId, sessionCfg);
+				return session;
+			}.bind(this));
 		},
 		delete: function(name) {
 			return $http({
