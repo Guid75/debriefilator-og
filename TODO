@@ -10,6 +10,7 @@ La priorité de chaque tâche est entre crochets.
 - [moyen] Lorsqu'on modifie une note publique, updater régulièrement le contenu de la note avec l'API
 - [moyen] Lorsqu'on valide une note (qu'on sort le focus), on perd la possibilité d'annuler l'édition, tant qu'on a pas validé la note, "ESC" devrait remettre l'ancien contenu
 - [moyen] Gérer l'UNDO (et REDO en bonus)
+- [moyen] Remplacer ngmin par ng-annotate
 
 - [faible] Utiliser des petits carrés de couleur pour la représentation des postitslayout dans la combobox de choix
 - [faible] Les topbar des zones de postits devraient être flottantes pour être toujours visible même quand on scroll les postits
