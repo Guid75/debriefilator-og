@@ -8,11 +8,13 @@
   <div class="postit-editable" note contenteditable initfocus strip-br="true" ng-model="note.text">
   </div>
   <div class="postit-toolbar" >
-	<span class="label label-success postit-increment"
+	<span class="label label-success postit-increment note-label"
 		  ng-click="incrementScore(column.name,
-					note.id)" title="+1" ng-show="showbuttons ||
-		  note.score > 1" >{{showbuttons ? note.score + '+' : note.score}}</span>
-	<span class="label label-warning postit-increment" title="-1"
+					note.id)" title="Increase score" ng-show="showbuttons ||
+		  note.score > 1" style="clear:both;">{{showbuttons ? note.score + '+' :
+		  note.score}}</span>
+	<span class="label label-warning postit-increment note-label"
+		  title="Decrease score"
 		  ng-click="decrementScore(column.name,
 					note.id)" ng-show="showbuttons && note.score > 1">-</span>
   </div>

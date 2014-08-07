@@ -145,6 +145,14 @@ note-layout {
 	border-radius: 4px;
 }
 
+.note-label {
+	transition: all linear 0.2s;
+}
+
+.note-label.ng-hide {
+	opacity: 0;
+}
+
 .postit-dragged {
 	border: 1px solid black;
 }
@@ -193,4 +201,40 @@ note-layout {
 
 .postits-filter {
 /*	width: 450px;*/
+}
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+	transition: 0.5s linear all;
+	opacity: 0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+	opacity: 1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-leave {
+	animation: 0.5s my_animation;
+}
+
+@keyframes my_animation {
+	from { opacity:1; }
+	to { opacity:0; }
 }
