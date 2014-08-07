@@ -10,8 +10,8 @@ angular.module('debriefilatorApp')
 	.directive('note', function () {
 		return {
 			restrict: 'A',
-			link: function postLink(scope, element, attrs) {
-				element.bind("keypress", function (event) {
+			link: function postLink(scope, element) {
+				element.bind('keypress', function (event) {
 					if (event.which === 13 && !event.shiftKey) {
 						element[0].blur();
 
