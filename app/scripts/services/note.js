@@ -7,7 +7,7 @@
  * # note
  * Factory in the debriefilatorApp.
  */
-app.factory('Note', function ($http, Session, uuid4) {
+app.factory('Note', function ($q, $http, Session, uuid4) {
 	var
 	privateItems = {},
 	publicItems = {},
@@ -82,7 +82,7 @@ app.factory('Note', function ($http, Session, uuid4) {
 			// TODO check the parameters validity
 
 			if (scope === 'public') {
-				$http({
+				return $http({
 					method: 'POST',
 					url: 'api/session/' + Session.current().id + '/note/new',
 					data: {
@@ -96,14 +96,18 @@ app.factory('Note', function ($http, Session, uuid4) {
 						score: score,
 						id: result.data.noteId
 					});
+					return result.data.noteId;
 				});
-			} else {
+			}
+			return $q(function(resolve) {
+				var id = uuid4.generate();
 				items[column].push({
 					text: text,
 					score: score,
-					id: uuid4.generate()
+					id: id
 				});
-			}
+				resolve(id);
+			});
 		},
 		incrementScore: function(column, noteId, scope) {
 			var note = getNote(noteId, scope);

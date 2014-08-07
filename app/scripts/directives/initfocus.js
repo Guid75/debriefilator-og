@@ -12,7 +12,7 @@ app.directive('initfocus', function () {
         link: function(scope, element) {
 			setTimeout(function() {
 				element[0].focus();
-				document.execCommand('selectAll',false,null);
+				document.execCommand('selectAll', false, null);
 			}, 0);
         }
     };

@@ -13,7 +13,16 @@ app.controller('NotesCtrl', function ($scope, $rootScope, Note) {
 	};
 
 	$scope.addNote = function(column) {
-		Note.add(column, 'Enter your remark here', 1, $scope.notesScope);
+		Note.add(column, 'Enter your remark here', 1, $scope.notesScope)
+		.then(function(noteId) {
+			$scope.notes(column).some(function(note) {
+				if (note.id === noteId) {
+					note.focusMe = 'true';
+					return true;
+				}
+				return false;
+			});
+		});
 	};
 
 	$scope.deleteNote = function(column, noteId) {
