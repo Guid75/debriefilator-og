@@ -23,14 +23,14 @@ var app = angular
 		]);
 
 app.config(function($stateProvider, $urlRouterProvider) {
-	// For any unmatched url, redirect to /state1
+	// For any unmatched url, redirect to /welcome
 	$urlRouterProvider.otherwise('/welcome');
 
 	// Now set up the states
 	$stateProvider
 		.state('welcome', {
 			url: '/welcome',
-			template: '<div>Welcome!</div>'
+			template: ''
 		})
 	    .state('session', {
 			url: '/session/:sessionid',

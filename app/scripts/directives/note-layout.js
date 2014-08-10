@@ -13,6 +13,6 @@ app.directive('noteLayout', function () {
 		scope: {
 			notesScope: '@'
 		},
-		controller: 'SessionCtrl'
+		controller: 'NotesCtrl'
 	};
 });

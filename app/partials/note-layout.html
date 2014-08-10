@@ -1,6 +1,6 @@
 <div class="postits-columns">
-  <div class="columns-wrapper" ng-controller="NotesCtrl">
-	<div ng-repeat="column in layout"
+  <div class="columns-wrapper">
+	<div ng-repeat="column in $parent.layout"
 		 ng-include="'partials/column.html'" class="notes-column"
 		 style="width: {{getWidthStyle()}};"
 		 postit-type="{{column.name}}">
@@ -8,7 +8,7 @@
 	<div class="postits-header" >
 	  <div class="btn-group btn-group-sm">
 		<button type="button"
-				ng-repeat="column in layout"
+				ng-repeat="column in $parent.layout"
 				class="btn btn-default"
 				ng-click="addNote(column.name)"
 				style="background-color: {{column.color}};">
